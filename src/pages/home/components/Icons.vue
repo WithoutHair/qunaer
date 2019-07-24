@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(page, index) of pages" :key="index">
         <div class="icon-img" v-for="item of page" :key="item.id">
           <div class="icon-img-content">
@@ -18,6 +18,9 @@ export default {
   name: 'HomeIcons',
   data () {
     return {
+      swiperOption: {
+        loop: false
+      },
       iconList: [
         {
           id: '0001',
@@ -76,6 +79,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @import '~styles/varibles.styl'
+  @import '~styles/mixins.styl'
   .icons
     height 0
     padding-bottom 50%
@@ -105,5 +110,6 @@ export default {
         text-align center
         height .44rem
         line-height .44rem
-        color #333
+        color $darkTextColor
+        ellipsis()
 </style>
