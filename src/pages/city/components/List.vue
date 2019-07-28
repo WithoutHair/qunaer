@@ -7,37 +7,11 @@
       </div>
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
-        <div class="area-city">北京</div>
-        <div class="area-city">北京</div>
-        <div class="area-city">北京</div>
-        <div class="area-city">北京</div>
-        <div class="area-city">北京</div>
-        <div class="area-city">北京</div>
-        <div class="area-city">北京</div>
+        <div class="area-city" v-for="item of hot" :key="item.id">{{item.name}}</div>
       </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
-        <div class="all-city">阿坝藏族羌族自治州</div>
+      <div class="area" v-for="(items, key) of cities" :key="key">
+        <div class="title border-topbottom">{{key}}</div>
+        <div class="all-city" v-for="item of items" :key="item.id">{{item.name}}</div>
       </div>
     </div>
   </div>
@@ -47,6 +21,10 @@
 import Bscroll from 'better-scroll'
 export default {
   name: 'CityList',
+  props: {
+    hot: Array,
+    cities: Object
+  },
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
   }
@@ -63,7 +41,7 @@ export default {
     right 0
     bottom 0
   .title
-    line-height .8rem
+    line-height .6rem
     background-color #eee
     text-indent .3rem
     font-size .24rem
