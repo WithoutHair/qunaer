@@ -3,15 +3,15 @@
     <div>
       <div class="area">
         <div class="title border-topbottom">当前城市</div>
-        <div class="area-city">北京</div>
+        <div class="area-city">{{this.city}}</div>
       </div>
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
-        <div class="area-city" v-for="item of hot" :key="item.id">{{item.name}}</div>
+        <div class="area-city" v-for="item of hot" :key="item.id" @click="handleChangeCity(item.name)">{{item.name}}</div>
       </div>
       <div class="area" v-for="(items, key) of cities" :key="key" :ref="key">
         <div class="title border-topbottom">{{key}}</div>
-        <div class="all-city" v-for="item of items" :key="item.id">{{item.name}}</div>
+        <div class="all-city" v-for="item of items" :key="item.id" @click="handleChangeCity(item.name)">{{item.name}}</div>
       </div>
     </div>
   </div>
@@ -19,6 +19,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'CityList',
   props: {
@@ -26,8 +27,15 @@ export default {
     cities: Object,
     letter: String
   },
-  mounted () {
-    this.scroll = new Bscroll(this.$refs.wrapper)
+  computed: {
+    ...mapState(['city'])
+  },
+  methods: {
+    handleChangeCity (city) {
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
   },
   watch: {
     letter () {
@@ -36,6 +44,9 @@ export default {
         this.scroll.scrollToElement(element)
       }
     }
+  },
+  mounted () {
+    this.scroll = new Bscroll(this.$refs.wrapper)
   }
 }
 </script>
