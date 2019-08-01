@@ -34,6 +34,9 @@ export default {
   },
   activated () {
     window.addEventListener('scroll', this.handleFixedShow)
+  },
+  deactivated () {
+    window.removeEventListener('scroll', this.handleFixedShow)
   }
 }
 </script>
