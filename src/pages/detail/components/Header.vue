@@ -27,6 +27,7 @@ export default {
         opacity = opacity > 1 ? 1 : opacity
         this.opacityStyle = { opacity }
         this.showAbs = false
+        console.log(top)
       } else {
         this.showAbs = true
       }
