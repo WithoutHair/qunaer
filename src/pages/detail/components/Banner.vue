@@ -9,12 +9,15 @@
       </div>
       <div class="banner-gradient"></div>
     </div>
-    <CommonGallery @close="handleGalleryClose" :imgs="imgs" v-show="showGallery"></CommonGallery>
+    <FadeAnimation>
+      <CommonGallery @close="handleGalleryClose" :imgs="imgs" v-show="showGallery"></CommonGallery>
+    </FadeAnimation>
   </div>
 </template>
 
 <script>
 import CommonGallery from 'common/gallery/Gallery'
+import FadeAnimation from 'common/fade/FadeAnimation'
 export default {
   name: 'DetailBanner',
   data () {
@@ -28,7 +31,8 @@ export default {
     imgs: Array
   },
   components: {
-    CommonGallery
+    CommonGallery,
+    FadeAnimation
   },
   methods: {
     handleShowGallery () {

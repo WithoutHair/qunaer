@@ -24,6 +24,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @import '~styles/mixins.styl'
   .title
     margin-top .2rem
     text-indent .3rem
@@ -46,6 +47,7 @@ export default {
       .item-desc
         line-height .4rem
         color #bbb
+        ellipsis()
       .item-button
         margin-top .1rem
         padding 0 .2rem
