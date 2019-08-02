@@ -27,7 +27,6 @@ export default {
         opacity = opacity > 1 ? 1 : opacity
         this.opacityStyle = { opacity }
         this.showAbs = false
-        console.log(top)
       } else {
         this.showAbs = true
       }
@@ -56,6 +55,7 @@ export default {
     background rgba(0, 0, 0, .4)
     color #fff
   .header-fixed
+    z-index 2
     position fixed
     top 0
     right 0
